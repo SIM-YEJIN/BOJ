@@ -1,0 +1,24 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+int n;
+int ans_max = -1000000; 
+int ans_min = 1000000;
+
+void FindMinMax() {
+	int tmp;
+	for (int i = 0; i < n; i++) {
+		scanf("%d", &tmp);
+		ans_max = (tmp > ans_max) ? tmp : ans_max;
+		ans_min = (tmp < ans_min) ? tmp : ans_min;
+	}
+}
+int main10818() {
+	cin >> n;
+	FindMinMax();
+	cout << ans_min << ' ' << ans_max << "\n";
+
+	return 0;
+}
