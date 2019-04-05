@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+vector<int> a(1001);
+bool check[1001];
+int cycle = 0;
+
+void dfs(int node) {
+	if (check[node]) return;
+	check[node] = true;
+	dfs(a[node]);
+}
+
+int main() {
+	int t;
+	scanf("%d", &t);
+	while (t--) {
+		int n;
+		scanf("%d", &n);
+		for (int i = 1; i <= n; i++) {
+			int number;
+			scanf("%d", &number);
+			a[i] = number;
+		}
+
+		for (int i = 1; i <= n; i++) {
+			if (check[i] == false) {
+				dfs(i);
+				cycle += 1;
+			}
+		}
+		printf("%d\n", cycle);
+		memset(check, false, sizeof(check));
+		cycle = 0;
+	}
+	return 0;
+}
